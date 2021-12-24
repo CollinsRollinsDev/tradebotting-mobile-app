@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/HomeScreen/Header';
-import HomeScreen from './components/HomeScreen/HomeScreen';
-import LandingScreen from './components/Landing/LandingScreen';
+import Header from './Header';
+import Overview from './Overview';
 
-export default function App() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       {/* <LandingScreen /> */}
-      {/* <Header /> */}
-      <HomeScreen />
+      <Header />
+      <Overview />
     </View>
   );
 }
@@ -20,6 +19,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height:'100%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#202fba',
   },
 });
