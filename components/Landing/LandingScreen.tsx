@@ -9,6 +9,7 @@ export default function LandingScreen() {
             <Image source={require("../../assets/td.png")} style={{width: '100%', height: '100%'}} />
         </View>
       <Text style={styles.title}>TradeBotting v1.5</Text>
+      <Text style={styles.credit}>By Collins Rollins</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -35,4 +36,9 @@ const styles = StyleSheet.create({
     fontWeight:'600',
     fontFamily: 'serif'
   },
+  credit:{
+      fontSize:12,
+      position:'absolute',
+      top:'90%',
+  }
 });
