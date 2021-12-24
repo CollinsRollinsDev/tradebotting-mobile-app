@@ -8,7 +8,7 @@ export default function LandingScreen() {
         <View style={styles.imgDiv}>
             <Image source={require("../../assets/td.png")} style={{width: '100%', height: '100%'}} />
         </View>
-      <Text style={styles.title}>TradeBotting v1.5</Text>
+      <Text style={styles.title}>TradeBotting v1.8</Text>
       <Text style={styles.credit}>By Collins Rollins</Text>
       <StatusBar style="auto" />
     </View>
