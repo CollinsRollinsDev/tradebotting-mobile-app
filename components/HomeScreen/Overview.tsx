@@ -11,7 +11,7 @@ import 'number-to-locale-string-polyfill';
 
 export default function Overview() {
   const dispatch = useDispatch();
-  const { btcData, ethData }:any = useSelector((state:any) => state.useTheReducer);
+  const { btcData, ethData, bnbData }:any = useSelector((state:any) => state.useTheReducer);
 
   const [bitcoinData, setBitcoinData] = useState();
   const [ethereumData, setEthereumData] = useState();
@@ -34,7 +34,7 @@ export default function Overview() {
   }, [])
 
 
-    const display = (
+    const displayBtc = (
         <View style={styles.box}>
         <View style={styles.top}>
             <View style={styles.imgDiv}>
@@ -67,13 +67,81 @@ export default function Overview() {
       </View>
     )
 
+    const displayEth = (
+      <View style={styles.box}>
+      <View style={styles.top}>
+          <View style={styles.imgDiv}>
+
+          </View>
+          <Text style={styles.topText}>Ethereum</Text>
+      </View>
+      <View style={styles.bottom}>
+          <View style={styles.bottomView}>
+          <Text style={styles.price}>Current Price: </Text><Text style={styles.item}>${ethData
+              ?  ethData.current_price.toLocaleString()
+              : "Fetching Data"}</Text>
+          </View>
+          <View style={styles.bottomView}>
+          <Text style={styles.price}>24hr Percent Change:</Text><Text style={styles.item}>{ethData
+              ? ethData.price_change_percentage_24h.toFixed(2)
+              : null}{" "}%</Text>
+          </View>
+          <View style={styles.bottomView}>
+          <Text style={styles.price}>24hr Price Change:</Text><Text style={styles.item}>$
+            {ethData.price_change_24h
+              ? ethData.price_change_24h.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })
+              :"Fetching Data"}</Text>
+          </View>
+       
+      </View>
+    </View>
+  )
+
+
+  const displayBnb = (
+    <View style={styles.box}>
+    <View style={styles.top}>
+        <View style={styles.imgDiv}>
+
+        </View>
+        <Text style={styles.topText}>Bitcoin</Text>
+    </View>
+    <View style={styles.bottom}>
+        <View style={styles.bottomView}>
+        <Text style={styles.price}>Current Price: </Text><Text style={styles.item}>${bnbData
+            ?  bnbData.current_price.toLocaleString()
+            : "Fetching Data"}</Text>
+        </View>
+        <View style={styles.bottomView}>
+        <Text style={styles.price}>24hr Percent Change:</Text><Text style={styles.item}>{bnbData
+            ? bnbData.price_change_percentage_24h.toFixed(2)
+            : null}{" "}%</Text>
+        </View>
+        <View style={styles.bottomView}>
+        <Text style={styles.price}>24hr Price Change:</Text><Text style={styles.item}>$
+          {bnbData.price_change_24h
+            ? bnbData.price_change_24h.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })
+            :"Fetching Data"}</Text>
+        </View>
+     
+    </View>
+  </View>
+)
+
+
   return (
   
     <View style={styles.bigContainer}>
       <ScrollView horizontal contentContainerStyle={styles.container}>
-      {display}
-      {display}
-      {display}
+      {displayBtc}
+      {displayEth}
+      {displayBnb}
      </ScrollView>
     </View>
   );
