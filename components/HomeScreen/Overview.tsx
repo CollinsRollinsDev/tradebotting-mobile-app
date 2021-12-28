@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 
 export default function Overview() {
@@ -29,30 +29,41 @@ export default function Overview() {
     )
 
   return (
-    <View style={styles.container}>
-     {display}
+  
+    <View style={styles.bigContainer}>
+      <ScrollView horizontal contentContainerStyle={styles.container}>
+      {display}
+      {display}
+      {display}
+     </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  bigContainer:{
+  
+  },
   container: {
-    flex: 1,
+    // flex: 1,
     maxHeight:300,
-    width: '100%',
+    width: 1100,
     // backgroundColor: 'darkblue',
-    justifyContent:'flex-start',
-    alignItems:'center',
-    flexDirection:'row',
+    // justifyContent:'flex-start',
+    // alignItems:'center',
+    // flexDirection:'row',
     padding:10,
+    marginBottom:20,
+    // overflow:'scroll'
   },
   box:{
-    height:'90%',
-    width: '85%',
+    height:300,
+    width: 350,
     backgroundColor: 'darkblue',
     justifyContent:'flex-start',
     alignItems:'center',
     borderRadius:20,
+    marginRight:20,
     overflow:'hidden'
   },
   top:{

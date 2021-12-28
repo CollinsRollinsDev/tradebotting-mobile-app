@@ -1,8 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
-export default function LandingScreen() {
+export default function LandingScreen({navigation}:any) {
+
+  useLayoutEffect(() => {
+   const unsubscribe:any = setTimeout(() => {
+    navigation.replace("HomeScreen")
+   }, 4000);
+  //  return unsubscribe;
+  }, [])
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false
+        // title:'',
+        // headerStyle:{backgroundColor: 'transparent'},
+        // headerTitleStyle: {color: 'transparent'},
+        // headerTintColor:'transparent',
+        // headerLeft: () => (
+        //     <View style={{marginRight:10}}>
+        //         <TouchableOpacity activeOpacity={0.5} onPress={signOut}>
+        //         <Avatar rounded source={{uri: auth?.currentUser?.photoURL }} />
+        //         </TouchableOpacity>
+        //     </View>
+        // ),
+        // headerRight: () => (
+        //     <View style={{flexDirection:'row', justifyContent:'space-between', width:80,  marginRight:20}}>
+        //         <TouchableOpacity activeOpacity={0.5}>
+        //             <AntDesign name="camerao" size={24} color="black" />
+        //         </TouchableOpacity>
+        //         <TouchableOpacity onPress={() => navigation.navigate("AddChat")} activeOpacity={0.5}>
+        //             <SimpleLineIcons name="pencil" size={24} color="black" />
+        //         </TouchableOpacity>
+        //     </View>
+        // )
+    })
+ }, [])
+
   return (
     <View style={styles.container}>
         <View style={styles.imgDiv}>
