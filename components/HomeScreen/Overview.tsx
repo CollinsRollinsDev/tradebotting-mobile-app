@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect, useLayoutEffect} from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import axios from 'axios';
 import { useSelector, useDispatch } from "react-redux";
 import { setBtcData } from '../../reduxStore/actions';
@@ -38,7 +38,7 @@ export default function Overview() {
         <View style={styles.box}>
         <View style={styles.top}>
             <View style={styles.imgDiv}>
-
+            <Image source={{uri: btcData.image, width:50,height:50 }}/>
             </View>
             <Text style={styles.topText}>Bitcoin</Text>
         </View>
@@ -71,7 +71,7 @@ export default function Overview() {
       <View style={styles.box}>
       <View style={styles.top}>
           <View style={styles.imgDiv}>
-
+          <Image source={{uri: ethData.image, width:50,height:50 }}/>
           </View>
           <Text style={styles.topText}>Ethereum</Text>
       </View>
@@ -105,7 +105,7 @@ export default function Overview() {
     <View style={styles.box}>
     <View style={styles.top}>
         <View style={styles.imgDiv}>
-
+        <Image source={{uri: bnbData.image, width:50,height:50 }}/>
         </View>
         <Text style={styles.topText}>Bitcoin</Text>
     </View>
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   box:{
     height:300,
     width: 350,
-    backgroundColor: '#090147',
+    backgroundColor: '#070d8a',
     justifyContent:'flex-start',
     alignItems:'center',
     borderRadius:20,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     height:50,
     width:50,
     borderRadius:50,
-    backgroundColor:'red',
+    // backgroundColor:'red',
     marginRight:10
   },
   topText:{

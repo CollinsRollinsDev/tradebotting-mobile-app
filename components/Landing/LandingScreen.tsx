@@ -6,7 +6,7 @@ export default function LandingScreen({navigation}:any) {
 
   useLayoutEffect(() => {
    const unsubscribe:any = setTimeout(() => {
-    navigation.replace("HomeScreen")
+    navigation.replace("TabNavigator")
    }, 4000);
   //  return unsubscribe;
   }, [])

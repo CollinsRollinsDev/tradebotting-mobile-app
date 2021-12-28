@@ -2,8 +2,8 @@ import { SET_BTC_DATA, SET_ETH_DATA, SET_BNB_DATA } from './actions';
 
 let initialState = {
    btcData:'',
-   ethData:{},
-   bnbData:{},
+   ethData:'',
+   bnbData:'',
 }
 
 function useTheReducer(state = initialState, action){
