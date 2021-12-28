@@ -28,6 +28,13 @@ const TabNavigator = ({ navigation }) => {
     <>
       <Tab.Navigator 
       screenOptions={({route})=> ({
+        tabBarStyle: {
+            paddingHorizontal: 5,
+            paddingBottom: 2,
+            backgroundColor: '#dedee0',
+            position: 'absolute',
+            borderTopWidth: 0,
+        },
           tabBarIcon:({focused, size, color})=>{
             let iconName;
             if(route.name === "HomeScreen"){
@@ -81,66 +88,5 @@ const TabNavigator = ({ navigation }) => {
 export default TabNavigator;
 
 const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    justifyContent: "flex-start",
-    backgroundColor: "whitesmoke",
-  },
-  upperContainer: {
-    height: "40%",
-    backgroundColor: "#3464eb",
-    opacity: 0.8,
-    position: "relative",
-  },
-  churchName: {
-    fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "white",
-  },
-  churchSlogan: {
-    fontSize: 22,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "white",
-    marginTop: 25,
-  },
-  stretch: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "stretch",
-  },
-  imgView: {
-    zIndex: -1,
-    opacity: 0.3,
-  },
-  logo: {
-    height: 120,
-    width: 120,
-    position: "absolute",
-    top: "25%",
-    left: "5%",
-    // opacity: 0.8,
-  },
-  churchText: {
-    height: 110,
-    width: "58%",
-    backgroundColor: "transparent",
-    position: "absolute",
-    top: "30%",
-    right: "1%",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "column",
-  },
-  welcome: {
-    backgroundColor: "transparent",
-    position: "absolute",
-    marginLeft: "2%",
-    fontSize: 17,
-    color: "white",
-    fontWeight: "bold",
-    // zIndex: 1
-  },
+
 });
