@@ -6,6 +6,8 @@ import HomeScreen from './components/HomeScreen/HomeScreen';
 import LandingScreen from './components/Landing/LandingScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-redux";
+import { Store } from './reduxStore/store';
 
 const Stack = createNativeStackNavigator()
 
@@ -20,17 +22,14 @@ export default function App() {
 
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOptions}>
-          <Stack.Screen name="LandingScreen" component={LandingScreen} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    // <View style={styles.container}>
-    //   {/* <LandingScreen /> */}
-    //   {/* <Header /> */}
-    //   <HomeScreen />
-    // </View>
+    <Provider store={Store}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={globalScreenOptions}>
+            {/* <Stack.Screen name="LandingScreen" component={LandingScreen} /> */}
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

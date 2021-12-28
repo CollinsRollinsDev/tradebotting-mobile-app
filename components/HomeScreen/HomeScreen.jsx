@@ -4,6 +4,7 @@ import { ScrollView, TouchableOpacity, StyleSheet, Text, View } from 'react-nati
 import ShowQuickGuide from '../Landing/ShowQuickGuide';
 import Header from './Header';
 import Overview from './Overview';
+import Records from './Records';
 
 export default function HomeScreen({navigation}) {
 
@@ -38,10 +39,9 @@ export default function HomeScreen({navigation}) {
   return (
     <ScrollView style={styles.container}>
       <StatusBar style="light" />
-      {/* <LandingScreen /> */}
-      {/* <Header /> */}
       <Overview />
       <ShowQuickGuide />
+      <Records />
     </ScrollView>
   );
 }

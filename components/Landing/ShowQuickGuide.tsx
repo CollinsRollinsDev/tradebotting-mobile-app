@@ -1,8 +1,18 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const ShowQuickGuide = () => {
-  return (
+  const [display, setDisplay] = useState(false);
+  const [guideStatement, setGuideStatement] = useState("Open Guide");
+
+  const handlePress = () => {
+    !display ? setDisplay(true) : setDisplay(false);
+    !display
+      ? setGuideStatement("Close Guide")
+      : setGuideStatement("Open Guide");
+  };
+
+  const displayGuild = (
     <View style={styles.container}>
       <Text style={styles.heading}>Quick Guide</Text>
       <Text style={styles.paragraph}>
@@ -55,8 +65,17 @@ const ShowQuickGuide = () => {
       </Text>
       <Text style={styles.heading}>Adds on</Text>
       <Text style={styles.paragraph}>
-      For more informatin, contact the developer: 08039290897
+        For more informatin, contact the developer: 08039290897
       </Text>
+    </View>
+  );
+
+  return (
+    <View style={{ height: "auto", width: "100%" }}>
+        <TouchableOpacity onPress={handlePress}>
+            <Text style={{textAlign:'center', fontSize:17, color:'white', padding:10, backgroundColor:'blue'}} >{guideStatement}</Text>
+        </TouchableOpacity>
+      {display && displayGuild}
     </View>
   );
 };
@@ -80,6 +99,6 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     marginTop: 10,
-    color:'whitesmoke'
+    color: "whitesmoke",
   },
 });

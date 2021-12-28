@@ -1,9 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import axios from 'axios';
+import { useSelector, useDispatch } from "react-redux";
+import { setBtcData } from '../../reduxStore/actions';
+import { setEthData } from '../../reduxStore/actions';
+import { setBnbData } from '../../reduxStore/actions';
+import 'number-to-locale-string-polyfill';
 
 
 export default function Overview() {
+  const dispatch = useDispatch();
+  const { btcData, ethData }:any = useSelector((state:any) => state.useTheReducer);
+
+  const [bitcoinData, setBitcoinData] = useState();
+  const [ethereumData, setEthereumData] = useState();
+  const [binanceData, setBinanceData] = useState();
+
+
+  const fetchDataOnStartup = async(coin:string, setter:any) => {
+    const res = await axios.get(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coin}&order=market_cap_desc&per_page=4&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C2d%2C3d%2C7d%2C14d%2C30d`
+    );
+    const data = await res.data[0];
+    dispatch(setter(data))
+    return data
+  }
+
+  useEffect(() => {
+    fetchDataOnStartup('bitcoin', setBtcData);
+    fetchDataOnStartup('ethereum', setEthData);
+    fetchDataOnStartup('binancecoin', setBnbData);
+  }, [])
+
 
     const display = (
         <View style={styles.box}>
@@ -15,13 +44,23 @@ export default function Overview() {
         </View>
         <View style={styles.bottom}>
             <View style={styles.bottomView}>
-            <Text style={styles.price}>Current Price:</Text><Text style={styles.item}>$51,127</Text>
+            <Text style={styles.price}>Current Price: </Text><Text style={styles.item}>${btcData
+                ?  btcData.current_price.toLocaleString()
+                : "Fetching Data"}</Text>
             </View>
             <View style={styles.bottomView}>
-            <Text style={styles.price}>24hr Percent Change:</Text><Text style={styles.item}>$51,127</Text>
+            <Text style={styles.price}>24hr Percent Change:</Text><Text style={styles.item}>{btcData
+                ? btcData.price_change_percentage_24h.toFixed(2)
+                : null}{" "}%</Text>
             </View>
             <View style={styles.bottomView}>
-            <Text style={styles.price}>24hr Price Change:</Text><Text style={styles.item}>$51,127</Text>
+            <Text style={styles.price}>24hr Price Change:</Text><Text style={styles.item}>$
+              {btcData.price_change_24h
+                ? btcData.price_change_24h.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })
+                :"Fetching Data"}</Text>
             </View>
          
         </View>
@@ -59,7 +98,7 @@ const styles = StyleSheet.create({
   box:{
     height:300,
     width: 350,
-    backgroundColor: 'darkblue',
+    backgroundColor: '#090147',
     justifyContent:'flex-start',
     alignItems:'center',
     borderRadius:20,
