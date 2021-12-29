@@ -17,6 +17,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import HomeScreen from "./HomeScreen";
 import LandingScreen from "../Landing/LandingScreen";
+import TradeArea from "../TradeArea/TradeArea";
 
 // const Tab = createNativeTabNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,8 +41,8 @@ const TabNavigator = ({ navigation }) => {
             if(route.name === "HomeScreen"){
                 iconName = 'home';
                 size = focused ? 20 : 17;
-            } else if(route.name === "LandingScreen"){
-                iconName = 'pen';
+            } else if(route.name === "TradeArea"){
+                iconName = 'chart-line';
                 size = focused ? 20 : 17;
                 color = focused ? 'brown' : 'black'
             } else if(route.name === "Event"){
@@ -70,7 +71,7 @@ const TabNavigator = ({ navigation }) => {
       >
             <Tab.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }}/>
             {/* <Tab.Screen name="About" component={About} options={{ headerShown: false }}/> */}
-            <Tab.Screen name="LandingScreen" component={LandingScreen} options={{ headerShown: false }}/>
+            <Tab.Screen name="TradeArea" component={TradeArea} options={{ headerShown: false }}/>
             {/* <Tab.Screen name="ReadPage" component={ReadPage} options={{ headerShown: false }}/> */}
             {/* <Tab.Screen name="Event" component={Event} options={{ headerShown: false }}/> */}
             {/* <Tab.Screen name="Notes" component={Notes} options={{ headerShown: false }}/> */}
