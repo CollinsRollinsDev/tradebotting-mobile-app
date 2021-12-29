@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image  } from 'react-native'
+import { StyleSheet, Text, View, ScrollView  } from 'react-native'
 import FirstLayer from './FirstLayer'
 import SecondLayer from './SecondLayer'
 import ThirdLayer from './ThirdLayer'

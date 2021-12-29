@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
-    "version": "1.0.0",
+    "name": "Tradebotting",
+    "slug": "tradebotting",
+    "version": "1.8.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/tdIcon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -20,8 +20,9 @@
       "supportsTablet": true
     },
     "android": {
+      "package":"tradebotting.collinsrollins",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/tdIcon.png",
         "backgroundColor": "#FFFFFF"
       }
     },

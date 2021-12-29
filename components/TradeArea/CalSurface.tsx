@@ -1,20 +1,13 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { useState, useEffect, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-interface test{
-    buttons:any,
-    theState:any,
-    props:any
-}
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { useState, useMemo } from "react";
+import { useSelector } from "react-redux";
 
 const CalSurface = () => {
+  const { selectedInterval, selectedTrade, historicDataForTrade }: any =
+    useSelector((state: any) => state.useTheReducer);
+  const historyData = historicDataForTrade;
 
-    const { selectedInterval, selectedCurrency, selectedTrade, historicDataForTrade }:any = useSelector((state:any) => state.useTheReducer);
-    const historyData = historicDataForTrade
-
-    
   let [delay_message, setDelay_message] = useState("");
   let [coin_price, setCoin_price] = useState<any>();
   let [coin_market_cap, setCoin_market_cap] = useState();
@@ -33,7 +26,6 @@ const CalSurface = () => {
   let [avgData, setAvgData] = useState<any>();
   let [percentageRange, setPercentageRange] = useState<any>();
   let [statement, setStatement] = useState("");
-
 
   const storeHistory = async () => {
     setCoin_price((coin_price = selectedTrade.current_price));
@@ -87,13 +79,13 @@ const CalSurface = () => {
     }
   };
   //calculate for percentage average limit
-  const pRange = async (avg:number) => {
-    console.log(avg, "incoming")
+  const pRange = async (avg: number) => {
+    console.log(avg, "incoming");
     let percentRange = coin_price - avg;
     percentRange = percentRange / coin_price;
     // console.log(coin_price);
     percentRange = percentRange * 100;
-    console.log(percentRange, "percentRange")
+    console.log(percentRange, "percentRange");
     setPercentageRange((percentageRange = percentRange));
     console.log(percentageRange, "percentage range");
   };
@@ -107,7 +99,11 @@ const CalSurface = () => {
   }, [historyData]);
 
   //Statemenents
-  const statements = (coin:string, duration:string | number, percent:string | number) => {
+  const statements = (
+    coin: string,
+    duration: string | number,
+    percent: string | number
+  ) => {
     if (duration === "1") {
       if (percent > 15) {
         setStatement(
@@ -191,19 +187,18 @@ const CalSurface = () => {
     }
   };
 
-    return (
-        <View style={styles.container}>
-            <Text style={{color:'white', fontSize:15}}>{statement}</Text>
-        </View>
-    )
-}
-
-export default CalSurface
+  return (
+    <View style={styles.container}>
+      <Text style={{ color: "white", fontSize: 15 }}>{statement}</Text>
+    </View>
+  );
+};
+export default CalSurface;
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center'
-    }
-})
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

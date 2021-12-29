@@ -72,9 +72,19 @@ const ShowQuickGuide = () => {
 
   return (
     <View style={{ height: "auto", width: "100%" }}>
-        <TouchableOpacity onPress={handlePress}>
-            <Text style={{textAlign:'center', fontSize:17, color:'white', padding:10, backgroundColor:'blue'}} >{guideStatement}</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={handlePress}>
+        <Text
+          style={{
+            textAlign: "center",
+            fontSize: 17,
+            color: "white",
+            padding: 10,
+            backgroundColor: "blue",
+          }}
+        >
+          {guideStatement}
+        </Text>
+      </TouchableOpacity>
       {display && displayGuild}
     </View>
   );
