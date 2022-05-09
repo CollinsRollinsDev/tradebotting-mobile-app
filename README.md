@@ -1,4 +1,4 @@
-#Crypto Trade Botting Advice App
+# Crypto Trade Botting Advice App
 ![thumbNail](https://res.cloudinary.com/crdev/image/upload/q_100/v1652077153/github_repos/TbotPRthumbnail_uesfcx.png)
 
 ### Stack Used
